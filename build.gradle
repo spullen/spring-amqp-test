@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'producer-consumer-3'
+    version = '0.0.1'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url 'https://repo.spring.io/libs-release' }
+}
+
+dependencies {
+    compile('org.codehaus.groovy:groovy-all:2.3.9')
+    compile('org.springframework.boot:spring-boot-starter-amqp')
+    compile('com.google.code.gson:gson:2.2.4')
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
